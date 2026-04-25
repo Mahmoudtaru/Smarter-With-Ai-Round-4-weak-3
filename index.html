@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smarter With AI - المحاضرة الثالثة (الدفعة الرابعة)</title>
+    
+    <!-- Google Fonts: Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#2A1B54',
+                            teal: '#20857D',
+                            green: '#7BBA4E',
+                            light: '#F4F9F8',
+                            darkbg: '#050a09',
+                            darkcard: '#0c1715'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #20857D; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #7BBA4E; }
+        
+        .gradient-text {
+            background: linear-gradient(to left, #2A1B54, #20857D, #7BBA4E);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .dark .gradient-text {
+            background: linear-gradient(to left, #7BBA4E, #20857D, #60A5FA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .accordion-content { transition: max-height 0.3s ease-out, padding 0.3s ease; }
+    </style>
+</head>
+<body class="bg-brand-light text-gray-800 dark:bg-brand-darkbg dark:text-gray-100 transition-colors duration-300 antialiased selection:bg-brand-green selection:text-white pb-12">
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-40 backdrop-blur-md bg-white/80 dark:bg-brand-darkbg/90 border-b-2 border-gray-200 dark:border-brand-teal/50 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo Area -->
+                <div class="flex items-center gap-2">
+                    <img src="https://i.postimg.cc/j512mZ0r/lwjw-image-hosting.jpg" alt="Smarter With AI Logo" class="w-12 h-12 rounded-xl object-contain shadow-sm bg-white border-2 border-brand-teal/30 dark:border-brand-teal">
+                    <span class="font-bold text-xl tracking-tight text-brand-dark dark:text-white">Smarter With <span class="text-brand-green">AI</span></span>
+                </div>
+                <!-- Theme Toggle -->
+                <button id="themeToggle" class="p-2 rounded-full hover:bg-brand-teal/10 dark:hover:bg-brand-teal/20 transition">
+                    <i id="themeIcon" class="fa-solid fa-moon text-xl text-brand-teal dark:text-brand-green"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header / Hero -->
+    <header class="max-w-4xl mx-auto mt-10 px-4 text-center">
+        <div class="inline-block px-4 py-1 rounded-full bg-brand-teal/10 text-brand-teal dark:bg-brand-teal/20 dark:text-brand-teal text-sm font-semibold mb-4">
+            الأسبوع الثالث - الدفعة الرابعة
+        </div>
+        <h1 class="text-3xl md:text-5xl font-extrabold mb-4 gradient-text">سحر العروض التقديمية وتوليد الصور</h1>
+        <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-4 font-bold">
+            دليلك الشامل من الفكرة للتصميم الاحترافي!
+        </p>
+        <p class="text-md text-gray-600 dark:text-gray-300 leading-relaxed">
+            هل بتضيع ساعات في عمل بريزنتيشن أو بتدور على صور ومش بتلاقي اللي في خيالك؟ في المحاضرة دي هنتعلم إزاي نعمل عروض تقديمية وإنفوجرافيك في دقايق، وهنغوص في عالم توليد الصور الاحترافية بمساعدة الذكاء الاصطناعي.
+        </p>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 py-12 space-y-12">
+
+        <!-- 1. منطقة التعلم (Learning Zone) -->
+        <section id="learning-zone" class="scroll-mt-24 bg-white dark:bg-brand-darkcard border-2 border-gray-200 dark:border-brand-teal/60 rounded-3xl p-6 md:p-8 shadow-md">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="p-3 bg-brand-teal/10 dark:bg-brand-teal/20 text-brand-teal dark:text-brand-green rounded-lg border border-brand-teal/30">
+                    <i class="fa-solid fa-brain text-xl"></i>
+                </div>
+                <h2 class="text-2xl font-bold border-b-2 border-brand-green pb-2 inline-block dark:text-white">منطقة التعلم (Learning Zone)</h2>
+            </div>
+
+            <!-- ملخص المحاضرة (فيديو مدمج) -->
+            <div class="mb-8">
+                <h3 class="font-bold text-lg text-brand-dark dark:text-white mb-3 flex items-center gap-2">
+                    <i class="fa-brands fa-youtube text-red-500"></i> الملخص المرئي للمحاضرة
+                </h3>
+                <div class="rounded-2xl overflow-hidden shadow-md border-2 border-gray-200 dark:border-brand-teal/40 bg-black aspect-video relative group flex items-center justify-center">
+                    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/Wb_GwUTSNOk?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <!-- روابط الاستماع والمرفقات -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                <!-- المحاضرة كاملة -->
+                <a href="https://t.me/c/3331953900/6/182" target="_blank" class="bg-gray-50 dark:bg-[#070e0c] rounded-2xl shadow-sm border border-gray-300 dark:border-brand-teal/60 p-4 flex items-center gap-3 hover:shadow-md hover:border-brand-green dark:hover:border-brand-green transition group">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-r from-brand-teal to-brand-green text-white flex items-center justify-center group-hover:scale-105 transition shadow-lg shrink-0 border border-white/20">
+                        <i class="fa-solid fa-play"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="font-bold text-sm text-brand-dark dark:text-white mb-0.5">المحاضرة كاملة</div>
+                        <p class="text-xs text-gray-500 dark:text-gray-300">شاهد الفيديو (تليجرام)</p>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-gray-400 dark:text-brand-green text-xs"></i>
+                </a>
+
+                <!-- المرفقات -->
+                <a href="https://drive.google.com/drive/folders/17r80Tqxl7nfJtZYnX1dxSAJHOt8cQ6EO?usp=sharing" target="_blank" class="bg-gray-50 dark:bg-[#070e0c] rounded-2xl shadow-sm border border-gray-300 dark:border-brand-teal/60 p-4 flex items-center gap-3 hover:shadow-md hover:border-brand-green dark:hover:border-brand-green transition group">
+                    <div class="w-10 h-10 rounded-full bg-brand-dark text-white flex items-center justify-center group-hover:scale-105 transition shadow-lg shrink-0 border border-white/20">
+                        <i class="fa-brands fa-google-drive"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="font-bold text-sm text-brand-dark dark:text-white mb-0.5">المرفقات</div>
+                        <p class="text-xs text-gray-500 dark:text-gray-300">ملفات الدرايف للأسبوع الثالث</p>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-gray-400 dark:text-brand-green text-xs"></i>
+                </a>
+            </div>
+
+            <!-- المحتوى المقروء -->
+            <div class="prose prose-lg dark:prose-invert max-w-none mt-4 text-gray-800 dark:text-gray-200">
+                
+                <p class="bg-brand-light dark:bg-[#081311] p-4 rounded-xl text-sm border-l-4 border-brand-teal mb-6">
+                    يلا بينا نربط الأحزمة وننطلق في أول جزء من الدليل بتاعنا، هنبدأ بالتمهيد اللي بيربطنا بالأسابيع اللي فاتت، وندخل بعدها على طول في الباب الأول. جهز كوباية الشاي بتاعتك ويلا بينا!
+                </p>
+
+                <h3 class="text-xl font-bold text-brand-dark dark:text-white mt-8 mb-4 flex items-center gap-2">
+                    الباب التمهيدي: ربط الأحزمة.. ليه الـ Prompt الاحترافي بيفرق؟ 🧠
+                </h3>
+                <p>زي ما شفنا في أول أسبوعين من دبلومة Smarter with AI، حجر الأساس في تعاملك مع أي أداة ذكاء اصطناعي هو <strong>"الأمر الاحترافي" (Professional Prompt)</strong>.</p>
+                <p>تخيل كده إنك جيت قولتلي: "يا دكتور محمود، أنا عايز أستخدم الذكاء الاصطناعي في شغلي". طبيعي جداً هسألك: إنت شغلتك إيه أصلاً؟ طب استخدمته قبل كده ولا لأ؟ إيه المشكلة اللي بتواجهك بالظبط؟ لو ماعرفتش التفاصيل دي كلها، مش هقدر أفيدك بنصيحة حقيقية!</p>
+                <p>الـ AI بيشتغل بنفس الطريقة بالظبط يا صديقي الجميل. الأداة متدربة على ملايين البيانات، وممكن تسألها سؤال عام فتديك إجابة سطحية أو عامة جداً. لكن <strong>السر دايماً في "السياق" (Context)</strong>. كل تفصيلة صغيرة بتديها للأداة عن هدفك، وجمهورك، والمشكلة اللي بتحلها، بتخلي الذكاء الاصطناعي يفصل الإجابة على مقاسك بالمللي. عشان كده، طول ما إحنا مكملين، افتكر دايماً: كل ما تدي تفاصيل أكتر، كل ما النتيجة هتضرب في الجون! 🎯</p>
+
+                <h3 class="text-xl font-bold text-brand-dark dark:text-white mt-10 mb-4 flex items-center gap-2">
+                    الباب الأول: سحر العروض التقديمية (Presentations).. المحتوى أولاً يا صديقي! 🪄
+                </h3>
+                <p>عمرك تخيلت إنك تكون قاعد بالليل، ومديرك أو دكتورك يطلب منك بريزنتيشن كاملة تعرضها الصبح؟ زمان، كنت هتفتح الباوربوينت، وتضيع ساعات في تجميع الداتا، وساعات أكتر عشان تظبط شكل السلايدز. وقت ومجهود جبار بيضيع!</p>
+                <p>دلوقتي، الذكاء الاصطناعي بيعمل كل ده في ثواني، بس قبل ما نتكلم عن الأدوات، في قاعدة ذهبية لازم نتفق عليها: <strong>"المحتوى هو الملك.. إحنا مش هدفنا بريزنتيشن شكلها حلو وخلاص!"</strong></p>
+                <p>يعني إيه؟ يعني خطوتك الأولى دايماً إنك تجهز "المحتوى الدسم والجميل" بتاعك باستخدام أي نموذج لغوي (زي ChatGPT أو Gemini). تخليه يكتبلك الأفكار، يرتبها، ويقسمها. وبعد ما المحتوى يكون جاهز وقوي، نتجه للخطوة التانية: إننا نحوله لشكل بصري مبهر (سواء بريزنتيشن أو إنفوجرافيك).</p>
+                
+                <h4 class="font-bold text-brand-teal dark:text-brand-green mt-6">أفضل الأدوات لتحويل المحتوى لبريزنتيشن:</h4>
+                <ol class="list-decimal list-inside space-y-4 mb-6">
+                    <li>
+                        <strong>موقع Gamma: السهل الممتنع</strong><br>
+                        جاما من أشهر وأحلى الأدوات اللي بتعمل بريزنتيشن شكلها شيك جداً. بتدي له المحتوى، وهو بيقسمه ويحط صور بتصميمات عصرية.<br>
+                        <span class="text-sm bg-gray-100 dark:bg-[#070e0c] p-2 rounded block mt-2 border-r-4 border-brand-teal">
+                            💡 <strong>تريكة صايعة (عيب وحل):</strong> جاما ممتاز، بس عيبه إنك في الخطة المجانية آخرك 10 سلايدز في المرة الواحدة. <strong>الحل؟</strong> قسم المحتوى بتاعك على كذا مرة، خلي الأداة تعمل 10 شرايح، وبعدين 10 كمان، وفي الآخر ادمجهم مع بعض في ملف واحد.
+                        </span>
+                    </li>
+                    <li>
+                        <strong>وكلاء الذكاء الاصطناعي (AI Agents) وعلى رأسهم Z.ai:</strong><br>
+                        وكلاء الذكاء الاصطناعي فكرتهم إنهم بيعملوا مهام معقدة بالنيابة عنك. طريقة عملهم في العروض التقديمية شبه بعض جداً، الفرق الجوهري بينهم بيكون في الـ "Credit" (الرصيد المتاح ليك) والـ "Limits" (الحدود). موقع Z.ai يعتبر مجاني وممتاز جداً في ترتيب الأفكار وعمل السلايدز.<br>
+                        <em>في مواقع تانية قوية زي (Manus, Genspark, Skywork) بتديلك "كريديت يومي" بيتجدد كل يوم، بس الكريديت ده مش بيترحل لليوم اللي بعده.</em>
+                    </li>
+                    <li>
+                        <strong>وحش جوجل NotebookLM (ميزة الـ Slide Decks):</strong><br>
+                        الميزة دي خلتني أعتمد عليها بقوة جنب Z.ai، لأنها مش بس بتعمل بريزنتيشن، دي بتبنيها بناءً على المصادر والمستندات اللي إنت رافعها بنفسك، وده بيضمن دقة ملهاش مثيل!
+                    </li>
+                </ol>
+
+                <!-- جدول المقارنة الأول -->
+                <div class="overflow-x-auto my-8">
+                    <table class="w-full text-sm text-right bg-white dark:bg-[#0a1412] rounded-xl overflow-hidden shadow-sm border border-gray-200 dark:border-brand-teal/30">
+                        <thead class="bg-brand-teal/10 dark:bg-brand-teal/20 text-brand-dark dark:text-brand-green">
+                            <tr>
+                                <th class="p-4 border-b border-gray-200 dark:border-brand-teal/30">الأداة / الموقع</th>
+                                <th class="p-4 border-b border-gray-200 dark:border-brand-teal/30">الميزة الأقوى</th>
+                                <th class="p-4 border-b border-gray-200 dark:border-brand-teal/30">العيب / القيود (في المجاني)</th>
+                                <th class="p-4 border-b border-gray-200 dark:border-brand-teal/30">الحل / التريكة</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-gray-700 dark:text-gray-200">
+                            <tr class="border-b border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-[#0d1a17] transition">
+                                <td class="p-4 font-bold text-brand-teal dark:text-brand-green">Gamma</td>
+                                <td class="p-4">تصميمات مبهرة، قوالب عصرية، توزيع ذكي للصور.</td>
+                                <td class="p-4">الحد الأقصى 10 شرائح للبريزنتيشن الواحدة.</td>
+                                <td class="p-4">قسم المحتوى الطويل على كذا بريزنتيشن وادمجهم.</td>
+                            </tr>
+                            <tr class="border-b border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-[#0d1a17] transition">
+                                <td class="p-4 font-bold text-brand-teal dark:text-brand-green">Z.ai (AI Agent)</td>
+                                <td class="p-4">مجاني، مرن جداً، ممتاز في ترتيب الأفكار والنصوص.</td>
+                                <td class="p-4">واجهة الاستخدام قد تحتاج بعض التعود.</td>
+                                <td class="p-4">الاعتماد عليه كبديل أساسي مفتوح ومجاني.</td>
+                            </tr>
+                            <tr class="border-b border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-[#0d1a17] transition">
+                                <td class="p-4 font-bold text-brand-teal dark:text-brand-green">وكلاء أخرى (Manus, Genspark)</td>
+                                <td class="p-4">قدرات بحث وتحليل قوية أثناء بناء العرض.</td>
+                                <td class="p-4">الكريديت يومي ولا يُرحل لليوم التالي.</td>
+                                <td class="p-4">استغل الكريديت اليومي الخاص بك كاملاً ولا تراكمه.</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 dark:hover:bg-[#0d1a17] transition">
+                                <td class="p-4 font-bold text-brand-teal dark:text-brand-green">NotebookLM</td>
+                                <td class="p-4">بيبني العرض بناءً على مستنداتك ومصادرك الخاصة بدقة 100%.</td>
+                                <td class="p-4">تنسيق العرض قد يكون أبسط بصرياً من Gamma.</td>
+                                <td class="p-4">استخدمه لو هدفك الدقة التامة والاعتماد على داتا معقدة.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 class="text-xl font-bold text-brand-dark dark:text-white mt-10 mb-4 flex items-center gap-2">
+                    الباب الثاني: الإنفوجرافيك وتلخيص المحتوى الدسم باستخدام NotebookLM 🧠
+                </h3>
+                <p>تخيل معاك ملف PDF طويل جداً، أو تفريغ لمحاضرة دسمة، أو حتى دراسة جدوى، ومطلوب منك تطلع منها بالخلاصة أو تحولها لمعلومات تتقرأ في ثواني. هنا بيجي دور NotebookLM في تبسيط المعلومات وخصوصاً عن طريق الإنفوجرافيك.</p>
+                <p>الإنفوجرافيك هو إنك تحول الداتا المعقدة لشكل بصري (صورة فيها نصوص منظمة). الأداة دي بتدعم نماذج قوية جداً لإنشاء الصور (زي نموذج نانو بنانا)، وفيها حوالي 10 ستايلات (Styles) مختلفة تقدر تختار منها وتكتبها في الوصف بتاعك.</p>
+                
+                <div class="bg-gray-50 dark:bg-[#070e0c] p-5 rounded-xl my-4 border border-gray-300 dark:border-brand-teal/50 border-r-4 border-r-brand-teal dark:border-r-brand-teal">
+                    <p class="font-bold text-brand-dark dark:text-white mb-2">💡 تريكة صايعة جداً (الهندسة العكسية للستايلات):</p>
+                    <p class="text-sm">لو شفت إنفوجرافيك ستايله عجبك جداً أونلاين بس مش عارف توصفه للأداة تعمل إيه؟</p>
+                    <ol class="list-decimal list-inside text-sm mt-2 space-y-1 text-gray-700 dark:text-gray-200">
+                        <li>احفظ الصورة دي عندك.</li>
+                        <li>ارفعها لأي نموذج لغوي (زي ChatGPT).</li>
+                        <li>اطلب منه: "أرجوك أوصفلي الستايل البصري والألوان والتصميم بتاع الإنفوجرافيك ده بدقة شديدة".</li>
+                        <li>خد الوصف اللي هيطلعهولك (Copy)، وروح حطه في الـ Prompt بتاعك جوه الأداة اللي بتعمل بيها الإنفوجرافيك. مبروك عليك! هتطلع بنتيجة شبه اللي عجبتك بالظبط.</li>
+                    </ol>
+                </div>
+
+                <h3 class="text-xl font-bold text-brand-dark dark:text-white mt-10 mb-4 flex items-center gap-2">
+                    الباب الثالث: سحر صناعة الصور.. الفن في عصر الذكاء الاصطناعي 🎨
+                </h3>
+                <p>عمرك تخيلت إن مجرد فكرة بتدور في دماغك ممكن تتحول لواقع مرئي في أقل من دقيقة؟ صناعة الصور بالذكاء الاصطناعي مابقتش مجرد ترفيه، دي بقت مهارة أساسية بتوفر وقت ومجهود جبار.</p>
+                
+                <ol class="list-decimal list-inside space-y-4">
+                    <li>
+                        <strong>إزاي بنصنع الصورة؟ (طرق الإنشاء)</strong>
+                        <ul class="list-disc list-inside mr-5 text-sm space-y-1">
+                            <li><strong>من نص لصورة (Text to Image):</strong> بتكتب اللي في خيالك، والأداة بترسمه من الصفر.</li>
+                            <li><strong>صورة مرجعية (Image Reference):</strong> معاك صورة جاهزة (هتاخد منها عنصر أو ستايل)، بترفعها وتقولها "امشي على نفس الروح دي".</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>أفكار ملهاش حصر.. إنت محتاج إيه؟ 🎯</strong>
+                        <ul class="list-disc list-inside mr-5 text-sm space-y-1">
+                            <li><strong>صورة شخصية (AI Portraits):</strong> للينكد إن أو السوشيال ميديا.</li>
+                            <li><strong>بوستر إعلاني:</strong> تصمم دعاية قوية لمنتج أو خدمة.</li>
+                            <li><strong>إنفوجرافيك:</strong> تبسط معلومات دسمة.</li>
+                            <li><strong>لوجو (Logo Design):</strong> تبني هوية بصرية لنفسك.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>التغذية البصرية والفكرية.. بنزين الإبداع 🧠👁️</strong>
+                        <ul class="list-disc list-inside mr-5 text-sm space-y-1">
+                            <li><strong>التغذية البصرية:</strong> اتفرج كتير على مواقع زي Pinterest و Behance.</li>
+                            <li><strong>كنز الدبلومة 💡:</strong> في تاب "البونص" جوه التطبيق هتلاقي قائمة "صور" لتصميم الصور، وقائمة "أوامر جاهزة" بتعرض صور خرافية وجنبها الـ Prompt بتاعها!</li>
+                            <li><strong>التغذية الفكرية:</strong> اتناقش مع المساعدين زي <em>Image Mood</em> وخليه يكتبلك الوصف الاحترافي.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>الأمر الاحترافي (The Pro Prompt) 🛠️</strong>
+                        <p class="text-sm inline">كل ما ضيفت تفاصيل أكتر، كل ما الصورة ضربت في الجون: وصف المكان، الشخصيات، الإضاءة، زاوية الكاميرا، المقاس وتنسيق الكلام.</p>
+                    </li>
+                    <li>
+                        <strong>الهندسة العكسية (لو صورة عجبتك!) 🔄</strong>
+                        <p class="text-sm inline">ارفع الصورة لأي نموذج زي ChatGPT واطلب تحليل (الاستايل، الألوان، الإضاءة) واستخدم الوصف في أي أداة صور عشان تحافظ على الـ Consistency.</p>
+                    </li>
+                </ol>
+
+                <h3 class="text-xl font-bold text-brand-dark dark:text-white mt-10 mb-4 flex items-center gap-2">
+                    الباب الرابع: وحوش النماذج.. فين نلاقيهم وإزاي بيطوروا؟ 🤖🚀
+                </h3>
+                <ul class="list-disc list-inside space-y-4">
+                    <li>
+                        <strong>موقع Flow: وحش جوجل الهادئ 🍌</strong><br>
+                        الموقع ده هو الملعب الأساسي بتاعنا، مبني بتكنولوجيا جوجل. بيعتمد بشكل أساسي على نموذج <strong>Nano Banana</strong>. ليه نانو بنانا؟ لأنه نموذج "بيفكر"؛ بيحلل السياق، بيفهم العلاقات بين العناصر، وبيطلع صور واقعية بدون علامات مائية. <strong>دعم اللغة العربية:</strong> الموديل ده مابقاش محتاج تترجم له برومبتاتك.. اكتب باللغة العربية (الفصحى أو العامية) وهيفهمك.
+                    </li>
+                    <li>
+                        <strong>نماذج تانية للمقارنة (Seedream ورفاقه):</strong><br>
+                        جرب "برومبت" واحد على نموذجين مختلفين عشان تشوف الفرق بين "واقعية" نانو بنانا وبين "فنية وخيال" سيدريم.
+                    </li>
+                    <li>
+                        <strong>التطور اليومي.. إحنا في سباق! 🏁</strong><br>
+                        النماذج دي بتتعلم كل ثانية. دايماً جرب برومبتات قديمة ليك على النماذج الجديدة وهتنبهر بالفرق!
+                    </li>
+                </ul>
+
+                <h3 class="text-xl font-bold text-brand-dark dark:text-white mt-10 mb-4 flex items-center gap-2">
+                    الباب الخامس: التعديل والسيطرة.. الصورة مش مجرد "ضغطة زرار"! 🛠️🪄
+                </h3>
+                <p>أكبر غلطة بيقع فيها المبتدئين إنهم بياخدوا أول صورة تطلع وخلاص. لكن المحترف هو اللي "بيعدل" لحد ما يوصل للكمال.</p>
+                <ol class="list-decimal list-inside space-y-2 text-sm mb-6">
+                    <li><strong>تعديل المقاس (Aspect Ratio):</strong> اختار المقاس اللي يخدم هدفك (1:1 للإنستجرام، 16:9 لليوتيوب، 9:16 للريلز). تغيير المقاس بيغير نظرة الـ AI لتوزيع العناصر.</li>
+                    <li><strong>التعديل على الصورة (In-painting):</strong> تقدر تظلل (Mask) على الجزء اللي مش عاجبك وتطلب يغيره أو يضيف عنصر مكانه من غير ما تعيد الصناعة من الأول.</li>
+                    <li><strong>الموديل "بيفكر" قبل ما يرسم:</strong> النماذج الحديثة عندها طبقة تفكير (Reasoning). كل ما كان برومبتك منطقي ومرتب، كل ما أبدع في التنفيذ.</li>
+                </ol>
+
+                <!-- جدول المقارنة الثاني -->
+                <div class="overflow-x-auto my-8">
+                    <table class="w-full text-sm text-right bg-white dark:bg-[#0a1412] rounded-xl overflow-hidden shadow-sm border border-gray-200 dark:border-brand-teal/30">
+                        <thead class="bg-brand-teal/10 dark:bg-brand-teal/20 text-brand-dark dark:text-brand-green">
+                            <tr>
+                                <th class="p-4 border-b border-gray-200 dark:border-brand-teal/30">الميزة</th>
+                                <th class="p-4 border-b border-gray-200 dark:border-brand-teal/30">الفائدة العملية</th>
+                                <th class="p-4 border-b border-gray-200 dark:border-brand-teal/30">الأداة المرشحة</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-gray-700 dark:text-gray-200">
+                            <tr class="border-b border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-[#0d1a17] transition">
+                                <td class="p-4 font-bold text-brand-teal dark:text-brand-green">دعم العربية</td>
+                                <td class="p-4">بتكتب برومبتك بلهجتك وبتوفر وقت الترجمة.</td>
+                                <td class="p-4">Flow (Nano Banana)</td>
+                            </tr>
+                            <tr class="border-b border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-[#0d1a17] transition">
+                                <td class="p-4 font-bold text-brand-teal dark:text-brand-green">تعديل المقاس</td>
+                                <td class="p-4">بتخلي الصورة مناسبة للمكان اللي هتنشر فيه.</td>
+                                <td class="p-4">إعدادات الموقع قبل الرندرة.</td>
+                            </tr>
+                            <tr class="border-b border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-[#0d1a17] transition">
+                                <td class="p-4 font-bold text-brand-teal dark:text-brand-green">التعديل (In-painting)</td>
+                                <td class="p-4">بتصلح الغلطات أو بتضيف عناصر جديدة للصورة.</td>
+                                <td class="p-4">أدوات التحرير جوه موقع Flow.</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 dark:hover:bg-[#0d1a17] transition">
+                                <td class="p-4 font-bold text-brand-teal dark:text-brand-green">المقارنة اللحظية</td>
+                                <td class="p-4">بتشوف مين أحلى (نانو بنانا ولا سيدريم) في ثانية.</td>
+                                <td class="p-4">مواقع المقارنة (Arena).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 2. التطبيق العملي (Action Zone) -->
+        <section id="action-zone" class="scroll-mt-24 bg-white dark:bg-brand-darkcard border-2 border-gray-200 dark:border-brand-teal/60 rounded-3xl p-6 md:p-8 shadow-md">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="p-3 bg-brand-green/10 dark:bg-brand-green/20 text-brand-green rounded-lg border border-brand-green/30">
+                    <i class="fa-solid fa-bolt text-xl"></i>
+                </div>
+                <h2 class="text-2xl font-bold border-b-2 border-brand-teal pb-2 inline-block dark:text-white">التطبيق العملي: أوامر جاهزة</h2>
+            </div>
+            
+            <p class="mb-6 text-gray-600 dark:text-gray-200">استخدم هذه الأوامر للحصول على نتائج دقيقة في توليد الصور وتطبيق الهندسة العكسية:</p>
+
+            <div class="space-y-6">
+                <!-- Prompt Card 1: Reverse Engineering -->
+                <div class="bg-gray-50 dark:bg-[#070e0c] border border-gray-300 dark:border-brand-teal/60 rounded-2xl p-5 shadow-sm hover:shadow-md transition">
+                    <div class="flex justify-between items-center mb-3 border-b border-gray-300 dark:border-brand-teal/40 pb-3">
+                        <h3 class="font-bold text-lg text-brand-teal dark:text-brand-green"><i class="fa-solid fa-code-compare ml-2"></i> أمر الهندسة العكسية للصور</h3>
+                        <button onclick="copyPrompt(this, 'prompt1')" class="text-sm bg-brand-teal/10 hover:bg-brand-teal/20 dark:bg-brand-teal/20 dark:hover:bg-brand-teal/40 text-brand-teal dark:text-brand-green px-3 py-1.5 rounded-lg font-semibold transition flex items-center gap-2 border border-brand-teal/30">
+                            <i class="fa-regular fa-copy"></i> نسخ الأمر
+                        </button>
+                    </div>
+                    <p class="text-xs text-gray-500 mb-2">ارفع الصورة التي أعجبتك لـ ChatGPT ثم استخدم هذا الأمر:</p>
+                    <div class="bg-white dark:bg-[#0a1412] border border-gray-200 dark:border-brand-teal/40 rounded-xl p-4 text-sm font-mono text-gray-800 dark:text-gray-100 leading-relaxed overflow-x-auto" dir="rtl">
+<pre id="prompt1" class="whitespace-pre-wrap font-sans">أرجوك قم بتحليل هذه الصورة المرفقة ووصف الستايل البصري، الألوان، الإضاءة، وزاوية الكاميرا بدقة شديدة وتفصيل. هدفي هو أخذ هذا الوصف واستخدامه كـ (Prompt) في أداة توليد صور لإنتاج صورة بنفس الروح والأسلوب الفني. قدم الوصف باللغة العربية الواضحة.</pre>
+                    </div>
+                </div>
+
+                <!-- Prompt Card 2: Image Generation Pro Prompt -->
+                <div class="bg-gray-50 dark:bg-[#070e0c] border border-gray-300 dark:border-brand-teal/60 rounded-2xl p-5 shadow-sm hover:shadow-md transition">
+                    <div class="flex justify-between items-center mb-3 border-b border-gray-300 dark:border-brand-teal/40 pb-3">
+                        <h3 class="font-bold text-lg text-brand-teal dark:text-brand-green"><i class="fa-solid fa-image ml-2"></i> قالب بناء صورة احترافية (Pro Prompt)</h3>
+                        <button onclick="copyPrompt(this, 'prompt2')" class="text-sm bg-brand-teal/10 hover:bg-brand-teal/20 dark:bg-brand-teal/20 dark:hover:bg-brand-teal/40 text-brand-teal dark:text-brand-green px-3 py-1.5 rounded-lg font-semibold transition flex items-center gap-2 border border-brand-teal/30">
+                            <i class="fa-regular fa-copy"></i> نسخ الأمر
+                        </button>
+                    </div>
+                    <p class="text-xs text-gray-500 mb-2">استخدم هذا القالب في موقع Flow وعدل ما بين الأقواس:</p>
+                    <div class="bg-white dark:bg-[#0a1412] border border-gray-200 dark:border-brand-teal/40 rounded-xl p-4 text-sm font-mono text-gray-800 dark:text-gray-100 leading-relaxed overflow-x-auto" dir="rtl">
+<pre id="prompt2" class="whitespace-pre-wrap font-sans">قم بإنشاء صورة لـ [وصف الشخصية: مثلاً شاب عربي يرتدي قميصاً أبيض]، متواجد في [المكان: مكتب عصري بخلفية زجاجية تطل على المدينة]. 
+الإضاءة يجب أن تكون [نوع الإضاءة: طبيعية ساطعة من النافذة / سينمائية درامية]. 
+زاوية الكاميرا [الزاوية: لقطة قريبة للوجه / واسعة تظهر المكتب]. 
+الأسلوب الفني: [واقعي جداً 8K / رسم كرتوني 3D].</pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. صندوق الأدوات والمساعدين (Tools & AI Agents) -->
+        <section id="tools-zone" class="scroll-mt-24 bg-white dark:bg-brand-darkcard border-2 border-gray-200 dark:border-brand-teal/60 rounded-3xl p-6 md:p-8 shadow-md relative overflow-hidden">
+            <div class="relative z-10">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="p-3 bg-brand-teal/10 dark:bg-brand-teal/20 text-brand-teal dark:text-brand-green rounded-lg border border-brand-teal/30">
+                        <i class="fa-solid fa-toolbox text-xl"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold border-b-2 border-brand-teal pb-2 inline-block dark:text-white">المنصات والمساعدين الشخصيين</h2>
+                </div>
+
+                <h3 class="font-bold text-lg text-brand-dark dark:text-white mb-4 border-b border-brand-teal/30 pb-2 inline-block">المساعدين الشخصيين (AI Agents):</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                    <!-- Presentation Mood -->
+                    <div class="bg-gray-50 dark:bg-[#070e0c] rounded-2xl p-5 text-center shadow-sm hover:shadow-md transition border border-gray-300 dark:border-brand-teal/60 flex flex-col justify-between group">
+                        <div>
+                            <h3 class="text-lg font-bold mb-2 text-brand-teal dark:text-brand-green"><i class="fa-solid fa-person-chalkboard"></i> Presentation Mood</h3>
+                            <p class="text-xs text-gray-600 dark:text-gray-300 mb-4">مساعد عروض احترافي يصمم، ينسق، ويولّد عروض متكاملة بأسلوب مهني.</p>
+                        </div>
+                        <div class="flex flex-col gap-2 mt-auto">
+                            <a href="https://chatgpt.com/g/g-68fff06a60e881918be273126a53ce97-presentation-mood" target="_blank" class="bg-[#10a37f] text-white font-bold px-4 py-2 rounded-lg hover:bg-[#0e906f] transition shadow-sm text-xs">
+                                <i class="fa-solid fa-robot"></i> ChatGPT
+                            </a>
+                            <a href="https://gemini.google.com/gem/a5583365f87f" target="_blank" class="bg-[#4285f4] text-white font-bold px-4 py-2 rounded-lg hover:bg-[#3367d6] transition shadow-sm text-xs">
+                                <i class="fa-brands fa-google"></i> Gemini
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Image Mood -->
+                    <div class="bg-gray-50 dark:bg-[#070e0c] rounded-2xl p-5 text-center shadow-sm hover:shadow-md transition border border-gray-300 dark:border-brand-teal/60 flex flex-col justify-between group">
+                        <div>
+                            <h3 class="text-lg font-bold mb-2 text-brand-teal dark:text-brand-green"><i class="fa-solid fa-image"></i> Image Mood</h3>
+                            <p class="text-xs text-gray-600 dark:text-gray-300 mb-4">شريك بصري ذكي يقترح برومبتات لإنشاء صور باحترافية.</p>
+                        </div>
+                        <div class="flex flex-col gap-2 mt-auto">
+                            <a href="https://chatgpt.com/g/g-68fea03a56dc8191a1a9d28a4fad9fca-image-mood" target="_blank" class="bg-[#10a37f] text-white font-bold px-4 py-2 rounded-lg hover:bg-[#0e906f] transition shadow-sm text-xs">
+                                <i class="fa-solid fa-robot"></i> ChatGPT
+                            </a>
+                            <a href="https://gemini.google.com/gem/d17049195aae" target="_blank" class="bg-[#4285f4] text-white font-bold px-4 py-2 rounded-lg hover:bg-[#3367d6] transition shadow-sm text-xs">
+                                <i class="fa-brands fa-google"></i> Gemini
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Infographic Mood -->
+                    <div class="bg-gray-50 dark:bg-[#070e0c] rounded-2xl p-5 text-center shadow-sm hover:shadow-md transition border border-gray-300 dark:border-brand-teal/60 flex flex-col justify-between group">
+                        <div>
+                            <h3 class="text-lg font-bold mb-2 text-brand-teal dark:text-brand-green"><i class="fa-solid fa-chart-pie"></i> Infographic Mood</h3>
+                            <p class="text-xs text-gray-600 dark:text-gray-300 mb-4">مساعد متخصص في تحويل النصوص إلى إنفوجرافيك تفصيلي وجذاب بصرياً.</p>
+                        </div>
+                        <div class="flex flex-col gap-2 mt-auto">
+                            <a href="https://chatgpt.com/g/g-69d75f28ff1c8191bc20c3e5dae522f3-infographic-mood" target="_blank" class="bg-[#10a37f] text-white font-bold px-4 py-2 rounded-lg hover:bg-[#0e906f] transition shadow-sm text-xs">
+                                <i class="fa-solid fa-robot"></i> ChatGPT
+                            </a>
+                            <a href="https://gemini.google.com/gem/22d7d2c55efc" target="_blank" class="bg-[#4285f4] text-white font-bold px-4 py-2 rounded-lg hover:bg-[#3367d6] transition shadow-sm text-xs">
+                                <i class="fa-brands fa-google"></i> Gemini
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="font-bold text-lg text-brand-dark dark:text-white mb-4 border-b border-brand-teal/30 pb-2 inline-block">الأدوات والمواقع:</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                    <!-- Flow -->
+                    <a href="https://labs.google/fx/tools/flow" target="_blank" class="bg-gray-50 dark:bg-[#070e0c] border border-gray-200 dark:border-brand-teal/40 hover:border-brand-teal dark:hover:border-brand-green hover:shadow-md rounded-xl p-4 text-center transition flex flex-col items-center gap-2 group">
+                        <i class="fa-solid fa-wand-magic-sparkles text-2xl text-[#fbbc04] group-hover:scale-110 transition-transform"></i>
+                        <span class="font-semibold text-sm text-brand-dark dark:text-gray-200">Flow</span>
+                        <span class="text-[10px] text-gray-500">توليد الصور من جوجل</span>
+                    </a>
+                    
+                    <!-- Gamma -->
+                    <a href="https://gamma.app/" target="_blank" class="bg-gray-50 dark:bg-[#070e0c] border border-gray-200 dark:border-brand-teal/40 hover:border-brand-teal dark:hover:border-brand-green hover:shadow-md rounded-xl p-4 text-center transition flex flex-col items-center gap-2 group">
+                        <i class="fa-solid fa-layer-group text-2xl text-[#d946ef] group-hover:scale-110 transition-transform"></i>
+                        <span class="font-semibold text-sm text-brand-dark dark:text-gray-200">Gamma App</span>
+                        <span class="text-[10px] text-gray-500">للعروض التقديمية</span>
+                    </a>
+
+                    <!-- Z.ai -->
+                    <a href="https://z.ai/" target="_blank" class="bg-gray-50 dark:bg-[#070e0c] border border-gray-200 dark:border-brand-teal/40 hover:border-brand-teal dark:hover:border-brand-green hover:shadow-md rounded-xl p-4 text-center transition flex flex-col items-center gap-2 group">
+                        <i class="fa-solid fa-bolt-lightning text-2xl text-[#3b82f6] group-hover:scale-110 transition-transform"></i>
+                        <span class="font-semibold text-sm text-brand-dark dark:text-gray-200">Z.ai</span>
+                        <span class="text-[10px] text-gray-500">وكيل الذكاء الاصطناعي</span>
+                    </a>
+
+                    <!-- NotebookLM -->
+                    <a href="https://notebooklm.google.com" target="_blank" class="bg-gray-50 dark:bg-[#070e0c] border border-gray-200 dark:border-brand-teal/40 hover:border-brand-teal dark:hover:border-brand-green hover:shadow-md rounded-xl p-4 text-center transition flex flex-col items-center gap-2 group">
+                        <i class="fa-solid fa-book-open-reader text-2xl text-purple-500 group-hover:scale-110 transition-transform"></i>
+                        <span class="font-semibold text-sm text-brand-dark dark:text-gray-200">NotebookLM</span>
+                        <span class="text-[10px] text-gray-500">لإنشاء Slide Decks</span>
+                    </a>
+                </div>
+
+                <!-- نصيحة البونص -->
+                <div class="bg-gradient-to-r from-brand-teal/10 to-brand-green/10 dark:from-brand-teal/20 dark:to-brand-green/20 border border-brand-green/40 rounded-2xl p-5 shadow-sm">
+                    <div class="flex items-center mb-3 pb-3 border-b border-brand-green/30">
+                        <h3 class="font-bold text-lg text-brand-dark dark:text-white"><i class="fa-solid fa-gem text-brand-teal ml-2"></i> كنز الدبلومة (التغذية البصرية)</h3>
+                    </div>
+                    <p class="text-sm text-gray-800 dark:text-gray-200 leading-relaxed">
+                        ادخل على تطبيق الدبلومة، في تاب "البونص" جوه "بنك أدوات الذكاء الاصطناعي"، هتلاقي قائمة "صور" مليانة مواقع للتصميم، وقائمة "أوامر جاهزة" بتعرض صور خرافية وجنبها الأمر (Prompt) اللي اتعملت بيه عشان تاخده وتعدل عليه براحتك!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 4. الروابط والمجتمع (Community & Tasks) -->
+    <footer class="bg-white dark:bg-[#050a09] border-t-2 border-gray-200 dark:border-brand-teal/50 mt-12 py-12 shadow-inner">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            
+            <!-- 1. التاسكات -->
+            <div class="flex flex-col h-full">
+                <h4 class="font-bold text-brand-dark dark:text-brand-green mb-4 text-lg border-r-4 border-brand-green pr-2 text-right shrink-0">التاسكات 🎯</h4>
+                <div class="bg-gray-50 dark:bg-brand-darkcard rounded-xl p-5 border border-gray-300 dark:border-brand-teal/50 flex-1 text-right flex flex-col justify-between">
+                    <div class="mb-4">
+                        <ul class="space-y-3 text-sm text-gray-700 dark:text-gray-200 list-disc list-inside">
+                            <li><strong>المحتوى أولاً:</strong> استخدم ChatGPT لتلخيص موضوع معقد في مجالك في شكل نقاط.</li>
+                            <li><strong>البريزنتيشن:</strong> خد النقاط دي وجرب تحولها لـ Presentation باستخدام Z.ai أو NotebookLM.</li>
+                            <li><strong>الإنفوجرافيك:</strong> دور على صورة إنفوجرافيك تعجبك، ارفعها لـ ChatGPT يوصفها (هندسة عكسية)، وخد الوصف جرب تطلع زيه.</li>
+                            <li><strong>تاسك المحترفين 🚀:</strong> ادخل موقع Flow، واكتب برومبت بالعربي بيوصف مشهد في خيالك. جرب تغير المقاس، ولو في حاجة مش عاجباك استخدم In-painting لتعديلها.</li>
+                        </ul>
+                    </div>
+
+                    <div class="border-t border-gray-200 dark:border-brand-teal/30 pt-4 mt-auto">
+                        <p class="text-xs text-brand-teal dark:text-brand-green font-semibold leading-relaxed">
+                            <i class="fa-regular fa-clock ml-1"></i> الديدلاين: 25 أبريل، بنحب دايماً نشوف محاولاتك عشان تكون Smarter With AI 💚
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. أدوات وروابط هامة -->
+            <div class="flex flex-col h-full">
+                <h4 class="font-bold text-brand-dark dark:text-brand-green mb-4 text-lg border-r-4 border-brand-teal pr-2 text-right shrink-0">أدوات وروابط 🔗</h4>
+                <div class="bg-gray-50 dark:bg-brand-darkcard rounded-xl p-5 border border-gray-300 dark:border-brand-teal/50 flex-1 text-right flex flex-col justify-center">
+                    <div class="space-y-6">
+                        <div>
+                            <h5 class="text-xs font-bold text-gray-500 dark:text-gray-400 mb-3 uppercase tracking-wider">أدوات الدبلومة</h5>
+                            <ul class="space-y-3">
+                                <li>
+                                    <a href="https://notebooklm.google.com/notebook/7b7f75b1-77f6-4363-ada6-84c730d6bfc7" target="_blank" class="flex items-center justify-start gap-2 text-sm text-brand-teal hover:text-brand-green dark:text-gray-300 dark:hover:text-brand-green transition font-semibold w-full">
+                                        <i class="fa-solid fa-book-open-reader text-lg w-5 text-center text-brand-teal dark:text-brand-green shrink-0"></i> 
+                                        <span class="flex-1 text-right">نوت بوك الدبلومة</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h5 class="text-xs font-bold text-gray-500 dark:text-gray-400 mb-3 uppercase tracking-wider">روابط هامة</h5>
+                            <ul class="space-y-3">
+                                <li>
+                                    <a href="https://t.me/c/3331953900/4" target="_blank" class="flex items-center justify-start gap-2 text-sm text-brand-teal hover:text-brand-green dark:text-gray-300 dark:hover:text-brand-green transition font-semibold w-full">
+                                        <i class="fa-brands fa-telegram text-lg w-5 text-center text-brand-teal dark:text-brand-green shrink-0"></i> 
+                                        <span class="flex-1 text-right">قناة التاسكات</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://mahmoudtaru.github.io/Smarter-With-Ai-Round-4/" target="_blank" class="flex items-center justify-start gap-2 text-sm text-brand-teal hover:text-brand-green dark:text-gray-300 dark:hover:text-brand-green transition font-semibold w-full">
+                                        <i class="fa-solid fa-laptop-code text-lg w-5 text-center text-brand-teal dark:text-brand-green shrink-0"></i> 
+                                        <span class="flex-1 text-right">تطبيق الدبلومة الأساسي</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. الدعم والأسئلة -->
+            <div class="flex flex-col h-full">
+                <h4 class="font-bold text-brand-dark dark:text-brand-green mb-4 text-lg border-r-4 border-brand-teal pr-2 text-right shrink-0">الدعم والأسئلة 🤝</h4>
+                <div class="bg-gray-50 dark:bg-brand-darkcard rounded-xl p-5 border border-gray-300 dark:border-brand-teal/50 flex-1 text-right flex flex-col justify-center">
+                    <ul class="space-y-4">
+                        <li>
+                            <a href="https://chat.whatsapp.com/C68FsQh5eYM7দ্দaKAXCk9vQ" target="_blank" class="flex items-center justify-start gap-3 p-3 rounded-xl bg-brand-green/10 dark:bg-[#081311] text-brand-green hover:bg-brand-green/20 transition border border-brand-green/20 dark:border-brand-teal/30 w-full">
+                                <i class="fa-brands fa-whatsapp text-2xl shrink-0"></i>
+                                <div class="flex-1 text-right">
+                                    <div class="font-bold text-sm dark:text-gray-200">جروب الواتساب</div>
+                                    <div class="text-xs text-brand-teal/80 dark:text-gray-400">المخصص للدفعة والإعلانات المهمة</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://t.me/c/3331953900/1" target="_blank" class="flex items-center justify-start gap-3 p-3 rounded-xl bg-brand-teal/10 dark:bg-[#081311] text-brand-teal hover:bg-brand-teal/20 transition border border-brand-teal/20 dark:border-brand-teal/30 w-full">
+                                <i class="fa-brands fa-telegram text-2xl dark:text-brand-green shrink-0"></i>
+                                <div class="flex-1 text-right">
+                                    <div class="font-bold text-sm dark:text-gray-200">جروب التليجرام</div>
+                                    <div class="text-xs text-brand-teal/80 dark:text-gray-400">خاص بالأسئلة والمناقشات بين الطلاب</div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 4. العلامة التجارية -->
+            <div class="flex flex-col items-center justify-center text-center h-full">
+                <img src="https://i.postimg.cc/j512mZ0r/lwjw-image-hosting.jpg" alt="Smarter With AI Logo" class="w-20 h-20 rounded-2xl object-contain shadow-md mb-4 bg-white border-2 border-brand-teal/30 dark:border-brand-teal">
+                <div class="font-extrabold text-2xl text-brand-dark dark:text-white">Smarter With <span class="text-brand-green">AI</span></div>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">نصنع الفارق بالذكاء الاصطناعي</p>
+            </div>
+        </div>
+        
+        <div class="text-center text-sm text-gray-400 dark:text-gray-500 mt-12 border-t border-gray-200 dark:border-brand-teal/30 pt-6 pb-24 md:pb-6">
+            جميع الحقوق محفوظة &copy; 2026 لـ Smarter With AI
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // --- 1. Dark/Light Mode Toggle ---
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+            }
+        });
+
+        // --- 2. Copy Prompt Function ---
+        function copyPrompt(button, elementId) {
+            const textToCopy = document.getElementById(elementId).innerText;
+            
+            const tempTextArea = document.createElement("textarea");
+            tempTextArea.value = textToCopy;
+            tempTextArea.style.position = "absolute";
+            tempTextArea.style.left = "-9999px";
+            document.body.appendChild(tempTextArea);
+            
+            tempTextArea.select();
+            
+            try {
+                document.execCommand("copy");
+                const originalHTML = button.innerHTML;
+                button.innerHTML = '<i class="fa-solid fa-check"></i> تم النسخ بنجاح';
+                button.classList.add('bg-brand-green', 'text-white');
+                button.classList.remove('bg-brand-teal/10', 'hover:bg-brand-teal/20', 'dark:bg-brand-teal/20', 'dark:hover:bg-brand-teal/30', 'text-brand-teal', 'dark:text-brand-green');
+                
+                setTimeout(() => {
+                    button.innerHTML = originalHTML;
+                    button.classList.remove('bg-brand-green', 'text-white');
+                    button.classList.add('bg-brand-teal/10', 'hover:bg-brand-teal/20', 'dark:bg-brand-teal/20', 'dark:hover:bg-brand-teal/30', 'text-brand-teal', 'dark:text-brand-green');
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy: ', err);
+                alert('عذراً، فشل النسخ التلقائي. يرجى النسخ يدوياً.');
+            } finally {
+                document.body.removeChild(tempTextArea);
+            }
+        }
+    </script>
+</body>
+</html>
